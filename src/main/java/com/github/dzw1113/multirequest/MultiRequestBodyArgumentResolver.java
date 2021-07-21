@@ -46,7 +46,7 @@ import com.github.dzw1113.annotation.MultiRequestBody;
  **/
 public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentResolver {
     
-    private static final String JSONBODY_ATTRIBUTE = "JSON_REQUEST_BODY";
+    public static final String JSONBODY_ATTRIBUTE = "JSON_REQUEST_BODY";
     
     private static final Logger log = LoggerFactory.getLogger(MultiRequestBodyArgumentResolver.class);
     
