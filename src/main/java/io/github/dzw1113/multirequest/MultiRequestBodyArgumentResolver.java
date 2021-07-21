@@ -1,4 +1,4 @@
-package com.github.dzw1113.multirequest;
+package io.github.dzw1113.multirequest;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -36,7 +36,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.github.dzw1113.annotation.MultiRequestBody;
+import io.github.dzw1113.annotation.MultiRequestBody;
 
 
 /**

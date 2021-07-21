@@ -1,4 +1,4 @@
-package com.github.dzw1113.config;
+package io.github.dzw1113.config;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.github.dzw1113.multirequest.MultiRequestBodyArgumentResolver;
+import io.github.dzw1113.multirequest.MultiRequestBodyArgumentResolver;
 
 
 /**

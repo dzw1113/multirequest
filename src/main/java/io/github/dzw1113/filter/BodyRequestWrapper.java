@@ -1,4 +1,4 @@
-package com.github.dzw1113.filter;
+package io.github.dzw1113.filter;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;

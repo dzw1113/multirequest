@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.dzw1113.config.WebConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.dzw1113.config.WebConfig
