@@ -10,10 +10,10 @@ import io.github.dzw1113.multirequest.MultiRequestBodyArgumentResolver;
 
 
 /**
+ * Web配置 增强解析Request Json
+ *
  * @author dzw
- * @description Web配置 增强解析Request Json
- * @date 2019/2/28 13:12
- **/
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     

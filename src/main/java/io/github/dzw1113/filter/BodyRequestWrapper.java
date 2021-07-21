@@ -14,11 +14,9 @@ import org.apache.commons.io.IOUtils;
 
 
 /**
- *
- * @description:从流获取请求
- * @author: dzw
- * @date: 2020/12/07 14:59
- **/
+ * 从流获取请求
+ * @author dzw
+ */
 public class BodyRequestWrapper extends HttpServletRequestWrapper {
 
     private byte[] bytes;

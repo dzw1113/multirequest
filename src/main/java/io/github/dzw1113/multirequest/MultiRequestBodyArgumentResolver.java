@@ -38,26 +38,17 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import io.github.dzw1113.annotation.MultiRequestBody;
 
-
 /**
+ * MultiRequestBody解析器
  * @author dzw
- * @description MultiRequestBody解析器
- * @date 2019/2/28 13:13
- **/
+ */
 public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentResolver {
     
     public static final String JSONBODY_ATTRIBUTE = "JSON_REQUEST_BODY";
     
     private static final Logger log = LoggerFactory.getLogger(MultiRequestBodyArgumentResolver.class);
     
-    /**
-     * @param jsonObj
-     * @return com.alibaba.fastjson.JSONObject
-     * @description 将json对象中包含的""替换成null
-     * @author dzw
-     * @date 2019/3/12 15:45
-     **/
-    public static JSONObject filterNull(JSONObject jsonObj) {
+    private static JSONObject filterNull(JSONObject jsonObj) {
         Set<String> set = jsonObj.keySet();
         Iterator<String> it = set.iterator();
         Object obj;
@@ -83,13 +74,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         return jsonObj;
     }
     
-    /**
-     * @param parameter 方法参数
-     * @return boolean 是否支持
-     * @description 设置支持的方法参数类型
-     * @author dzw
-     * @date 2019/2/28 13:14
-     **/
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // 支持带@MultiRequestBody注解的参数
@@ -97,15 +81,14 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
     }
     
     /**
-     * @param parameter     参数
-     * @param mavContainer
-     * @param webRequest
-     * @param binderFactory
-     * @return java.lang.Object
-     * @description 参数解析，注意：非基本类型返回null会报空指针异常，要通过反射或者JSON工具类创建一个空对象
-     * @author dzw
-     * @date 2019/2/28 13:14
-     **/
+     * 参数解析，注意：非基本类型返回null会报空指针异常，要通过反射或者JSON工具类创建一个空对象
+     * @param parameter 方法入参
+     * @param mavContainer mdoleAndView容器
+     * @param webRequest request
+     * @param binderFactory 绑定工厂
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
                                   WebDataBinderFactory binderFactory) throws Exception {
@@ -248,16 +231,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         }
     }
     
-    /**
-     * @param webRequest
-     * @param binderFactory
-     * @param parameter
-     * @param arg
-     * @return void
-     * @description 支持Valid注解
-     * @author dzw
-     * @date 2020/11/7 17:17
-     **/
     private void valid(NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory, MethodParameter parameter, Object arg)
             throws Exception {
         if (binderFactory != null) {
@@ -286,14 +259,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         return !hasBindingResult;
     }
     
-    /**
-     * @param parameterTypeName 入参类型
-     * @param value             入参值
-     * @return java.lang.Object
-     * @description 基本类型解析
-     * @author dzw
-     * @date 2019/2/28 13:16
-     **/
     private Object parsePrimitive(String parameterTypeName, Object value) {
         final String booleanTypeName = "boolean";
         if (booleanTypeName.equals(parameterTypeName)) {
@@ -330,14 +295,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         return null;
     }
     
-    /**
-     * @param parameterType 入参类型
-     * @param value         入参值
-     * @return java.lang.Object
-     * @description 基本类型包装类解析
-     * @author dzw
-     * @date 2019/2/28 13:16
-     **/
     private Object parseBasicTypeWrapper(Class<?> parameterType, Object value) {
         if (Number.class.isAssignableFrom(parameterType)) {
             if (parameterType == Integer.class) {
@@ -364,13 +321,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         return null;
     }
     
-    /**
-     * @param clazz 类
-     * @return boolean
-     * @description 判断是否为基本数据类型包装类
-     * @author dzw
-     * @date 2019/2/28 13:16
-     **/
     private boolean isBasicDataTypes(Class clazz) {
         Set<Class> classSet = new HashSet<>();
         classSet.add(Integer.class);
@@ -384,13 +334,6 @@ public class MultiRequestBodyArgumentResolver implements HandlerMethodArgumentRe
         return classSet.contains(clazz);
     }
     
-    /**
-     * @param webRequest request
-     * @return java.lang.String
-     * @description 获取请求体JSON字符串
-     * @author dzw
-     * @date 2019/2/28 13:17
-     **/
     private String getRequestBody(NativeWebRequest webRequest) {
         HttpServletRequest servletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
         

@@ -13,10 +13,9 @@ import org.springframework.http.HttpMethod;
 
 
 /**
- * @description 可反复获取body数据
+ * 可反复获取body数据
  * @author dzw
- * @date 2020/12/7 15:00
- **/
+ */
 public class BodyFilter implements Filter {
 
     @Override
